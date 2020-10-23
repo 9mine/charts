@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  cards-webhook:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2020-10-23T12:16:44.902307661Z"
+    description: Send telegram notifications when action inside github project occurs
+    digest: 7aacbcac07ea96d337c0aed7b11e4f29462fb207fad51eaf4152f01f3eff9a25
+    name: cards-webhook
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/cards-webhook-0.1.1/cards-webhook-0.1.1.tgz
+    version: 0.1.1
+generated: "2020-10-23T12:16:44.787358244Z"
