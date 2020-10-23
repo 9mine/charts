@@ -37,3 +37,11 @@ jobs:
           charts_repo_url: https://9mine.github.io/charts
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Notify Telegram
+        uses: yanzay/notify-telegram@v0.1.0
+        if: always()
+        with:
+          chat: ${{ secrets.TGBOT_CHAT }} 
+          token: ${{ secrets.TGBOT_TOKEN }} 
+          status: ${{ job.status }} 
