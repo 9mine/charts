@@ -11,4 +11,15 @@ entries:
     urls:
     - https://github.com/9mine/charts/releases/download/cards-webhook-0.1.1/cards-webhook-0.1.1.tgz
     version: 0.1.1
+  minetest-master:
+  - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2020-10-24T09:28:31.400066788Z"
+    description: Minetest server for 9mine
+    digest: 2dc99f2f9d890e47dbfffddd802e11a964ce8216aa0aa9caecda7e27b9a97bb4
+    name: minetest-master
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/minetest-master-0.1.0/minetest-master-0.1.0.tgz
+    version: 0.1.0
 generated: "2020-10-23T12:16:44.787358244Z"
