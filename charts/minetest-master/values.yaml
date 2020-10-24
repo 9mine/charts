@@ -30,7 +30,8 @@ ingress:
       kubernetes.io/ingress.class: nginx
   hosts:
     - host: in.metacoma.io
-      paths: []
+      paths:
+        - /
   tls: []
  
 resources: {}
