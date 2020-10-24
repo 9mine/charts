@@ -22,6 +22,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
+  protocol: UDP
   port: 30000
 
 ingress:
