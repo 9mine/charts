@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/9mine/charts/releases/download/cards-webhook-0.1.1/cards-webhook-0.1.1.tgz
     version: 0.1.1
+  ed:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-10-25T17:53:54.245820546Z"
+    description: A Helm chart for Kubernetes
+    digest: d86b9dfc609fb4213a8cdf2ab4b18d23c4cc0c4691d2fa8361f4f5af0e0b8588
+    name: ed
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/ed-0.1.0/ed-0.1.0.tgz
+    version: 0.1.0
   minetest-master:
   - apiVersion: v2
     appVersion: 1.1.0
