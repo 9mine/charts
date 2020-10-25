@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: dievri/webhook-9p-gateway:latest
-  pullPolicy: IfNotPresent
+  repository: dievri/webhook-9p-gateway
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
