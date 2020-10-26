@@ -21,17 +21,15 @@ podSecurityContext: {}
 securityContext: {}
 
 service:
-  type: LoadBalancer
+  type: NodePort
   port: 30000
 
 ingress:
-  enabled: true
-  annotations: 
-      kubernetes.io/ingress.class: nginx
+  enabled: false
+  annotations: {}
   hosts:
-    - host: in.metacoma.io
-      paths:
-        - /
+    - host: ""
+      paths: []
   tls: []
  
 resources: {}
