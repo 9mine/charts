@@ -14,6 +14,16 @@ entries:
   ed:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2020-10-26T12:10:37.5807794Z"
+    description: A Helm chart for Kubernetes
+    digest: fa6264a40b759314aacd108398183b118dcb9c1cbff375309054ab2288dce9b0
+    name: ed
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/ed-0.1.2/ed-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2020-10-25T21:53:22.150867116Z"
     description: A Helm chart for Kubernetes
     digest: 40033046b10d432afe793f0899832cfbc2caaa0b6b5a8b1287f52569cb457245
