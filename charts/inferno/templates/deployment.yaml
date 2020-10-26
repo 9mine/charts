@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "minetest-master.fullname" . }}
+  name: {{ include "inferno.fullname" . }}
   labels:
-    {{- include "minetest-master.labels" . | nindent 4 }}
+    {{- include "inferno.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels:
-      {{- include "minetest-master.selectorLabels" . | nindent 6 }}
+      {{- include "inferno.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "minetest-master.selectorLabels" . | nindent 8 }}
+        {{- include "inferno.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "minetest-master.serviceAccountName" . }}
+      serviceAccountName: {{ include "inferno.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -35,18 +35,12 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 30000
-              protocol: UDP
+              containerPort: 1917
+              protocol: TCP
           livenessProbe:
-            exec:
-              command:
-                - touch
-                - /tmp/liveness
+          
           readinessProbe:
-            exec:
-              command:
-                - touch
-                - /tmp/readiness
+       
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
