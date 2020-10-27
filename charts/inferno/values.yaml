@@ -19,7 +19,7 @@ podSecurityContext: {}
 securityContext: {}
 
 service:
-  type: LoadBalancer
+  type: NodePort
   port: 1917
 
 ingress:
