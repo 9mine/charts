@@ -20,7 +20,6 @@ securityContext: {}
 
 service:
   type: NodePort
-  nodePort: 31000
   port: 31000
 
 ingress:
