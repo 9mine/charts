@@ -20,7 +20,8 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 1917
+  nodePort: 31000
+  port: 31000
 
 ingress:
   enabled: false
