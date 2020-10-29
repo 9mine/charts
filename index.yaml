@@ -194,4 +194,15 @@ entries:
     urls:
     - https://github.com/9mine/charts/releases/download/minetest-master-0.1.0/minetest-master-0.1.0.tgz
     version: 0.1.0
+  youtube2text-tgbot:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-10-29T23:39:39.31624277Z"
+    description: A Helm chart for Kubernetes
+    digest: a85e515c9ebbc7e1194e9daac2525d344c4b5e562f56e36b93b160036f4a6903
+    name: youtube2text-tgbot
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/youtube2text-tgbot-0.1.0/youtube2text-tgbot-0.1.0.tgz
+    version: 0.1.0
 generated: "2020-10-23T12:16:44.787358244Z"
