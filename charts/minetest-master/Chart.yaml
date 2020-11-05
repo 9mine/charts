@@ -2,5 +2,5 @@ apiVersion: v2
 name: minetest-master
 description: Minetest server for 9mine
 type: application
-version: 0.1.8
-appVersion: 1.1.0
+version: 0.1.9
+appVersion: 1.1.1

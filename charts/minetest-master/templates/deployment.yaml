@@ -36,6 +36,8 @@ spec:
           env:
             - name: INFERNO_ADDRESS
               value: {{ .Values.INFERNO_ADDRESS }}
+            - name: REFRESH_TIME
+              value: {{ .Values.REFRESH_TIME }}
           ports:
             - name: http
               containerPort: 30000
