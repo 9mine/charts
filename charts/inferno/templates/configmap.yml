@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-profile
+data:
+  profile: |
+    {{ .Values.profile | nindent 4 }}
