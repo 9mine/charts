@@ -44,9 +44,17 @@ spec:
               value: "{{ .Release.Name }}"
             - name: NINEP_PUBLIC_PORT
               value: "{{ .Values.service.port }}"
+            - name: EXPORT_DIR
+              value: /host/execfuse-fs
+          volumeMounts:
+            - name: devfuse
+              mountPath: /dev/fuse
+            - name: profile-volume
+              mountPath: /usr/inferno-os/lib/sh/profile
+              subPath: profile
           ports:
             - name: 9p
-              containerPort: 1917
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
       initContainers:
         - name: {{ .Chart.Name }}-execfuse-jinja2
@@ -77,6 +85,9 @@ spec:
         - name: config-volume
           configMap: 
             name: {{ .Release.Name }}-execfuse-j2-definition
+        - name: profile-volume
+          configMap: 
+            name: {{ .Release.Name }}-profile
         - name: shared-data
           emptyDir: {}
         - name: devfuse
