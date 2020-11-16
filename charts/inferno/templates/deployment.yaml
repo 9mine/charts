@@ -67,7 +67,7 @@ spec:
       volumes:
         - name: profile-volume
           configMap: 
-            name: {{ .Chart.Name }}-profile
+            name: {{ .Release.Name }}-profile
         - name: devfuse
           hostPath:
             path: /dev/fuse
