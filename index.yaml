@@ -3,6 +3,16 @@ entries:
   9p-execfuse-jinja2:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2020-11-16T19:56:01.399844055Z"
+    description: A Helm chart for 9p-execfuse-jinja2
+    digest: b5b5de326520f532961df285c53e05942d077af1834fde7a3b012104d5beb7df
+    name: 9p-execfuse-jinja2
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/9p-execfuse-jinja2-0.1.2/9p-execfuse-jinja2-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2020-11-16T19:35:07.677741971Z"
     description: A Helm chart for 9p-execfuse-jinja2
     digest: d5cbf2d27e88d9dea7992417e5d301c48bff8104422bf68e2674f769015e9d9a
@@ -64,6 +74,16 @@ entries:
     - https://github.com/9mine/charts/releases/download/ed-0.1.0/ed-0.1.0.tgz
     version: 0.1.0
   inferno:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2020-11-16T19:56:01.598026478Z"
+    description: InfernoOS instance for k8s-9mine
+    digest: 971c6956be5f9429c0f190dcd420c715fc07d490c500f117a8beb68f67e4430d
+    name: inferno
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/inferno-0.3.0/inferno-0.3.0.tgz
+    version: 0.3.0
   - apiVersion: v2
     appVersion: 1.0.0
     created: "2020-11-16T19:32:00.285355345Z"
