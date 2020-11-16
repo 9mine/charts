@@ -44,7 +44,7 @@ spec:
               value: "{{ .Release.Name }}"
             - name: NINEP_PUBLIC_PORT
               value: "{{ .Values.service.port }}"
-            - name: EXPORT_DIR
+            - name: EXPORT_PATH
               value: /host/execfuse-fs
           volumeMounts:
             - name: devfuse
@@ -52,6 +52,8 @@ spec:
             - name: profile-volume
               mountPath: /usr/inferno-os/lib/sh/profile
               subPath: profile
+            - name: shared-data
+              mountPath: /execfuse-fs
           ports:
             - name: 9p
               containerPort: {{ .Values.service.port }}

@@ -69,4 +69,4 @@ profile: |
   mount -A tcp!registry!registry /mnt/registry
   
   echo $NINEP_PUBLIC_HOST > /dev/sysname 
-  grid/reglisten -A -r svc rstyx 'tcp!*!'1917 { export /host/execfuse-fs &}
+  grid/reglisten -A -r svc rstyx 'tcp!*!'^$port { export $dir &}
