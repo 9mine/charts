@@ -56,17 +56,3 @@ fs: |
           getattr: *file
 
 profile: |
-  load file2chan
-  load std
-  ndb/cs
-  for host_var in `{ os env } { '{'$host_var'}' }
-  
-  dir = $EXPORT_PATH
-  port = $NINEP_PUBLIC_PORT
-  
-  test -d /tmp || mkdir /tmp
-  test -d /mnt/registry || mkdir -p /mnt/registry
-  mount -A tcp!registry!registry /mnt/registry
-  
-  echo $NINEP_PUBLIC_HOST > /dev/sysname 
-  grid/reglisten -A -r svc rstyx 'tcp!*!'^$port { export $dir &}
