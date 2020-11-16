@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "inferno.fullname" . }}
+  name: {{ .Release.Name }}
   labels:
     {{- include "inferno.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
-      nodePort: {{ .Values.service.nodePort }}
+      targetPort: 1918
       protocol: TCP
-      name: http
+      name: 9p
   selector:
     {{- include "inferno.selectorLabels" . | nindent 4 }}

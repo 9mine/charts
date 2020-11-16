@@ -3,43 +3,45 @@ replicaCount: 1
 image:
   repository: dievri/inferno-os
   pullPolicy: Always
-  tag: "getauth"
-
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+  tag: "focal"
 
 serviceAccount:
-  create: true
-  annotations: {}
-  name: ""
+  create: false
 
-podAnnotations: {}
-podSecurityContext: {}
 securityContext: {}
 
 service:
-  type: NodePort
-  port: 31000
+  type: ClusterIP
+  port: 1918
 
 ingress:
   enabled: false
-  annotations: 
-      kubernetes.io/ingress.class: nginx
-  hosts:
-    - host: ""
-      paths: 
-        - /
-  tls: []
 
 resources: {}
 autoscaling:
   enabled: false
-  minReplicas: 1
-  maxReplicas: 1
 
-nodeSelector: {}
+profile: | 
+  load file2chan
+  load std
+  ndb/cs
+  for host_var in `{ os env } { '{'$host_var'}' }
+  CMD_CHAN_DIR = /tmp/cmdchan
 
-tolerations: []
+  test -d $CMD_CHAN_DIR || mkdir -p $CMD_CHAN_DIR
 
-affinity: {}
+  dir = /
+  port = 1918
+  
+  output_file := /tmp/output_file
+  file2chan $CMD_CHAN_DIR^/cmd {
+        if {~ ${rget offset} 0} {
+          cat $output_file | putrdata
+        } {
+          rread ''
+        }
+      } {
+        sh -c ${rget data} >$output_file >>[2]$output_file
+    	}
+
+  listen -A 'tcp!*!'$port { export $dir & } &

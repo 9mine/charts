@@ -39,15 +39,19 @@ spec:
               value: "{{ .value }}"
             {{- end }}
           ports:
-            - name: http
-              containerPort: 1917
+            - name: 9p
+              containerPort: 1918
               protocol: TCP
-          livenessProbe:
-          
-          readinessProbe:
        
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: devfuse
+              mountPath: /dev/fuse
+            - name: profile-volume
+              mountPath: /usr/inferno-os/lib/sh/profile
+              subPath: profile
+          
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -60,3 +64,10 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: profile-volume
+          configMap: 
+            name: {{ .Chart.Name }}-profile
+        - name: devfuse
+          hostPath:
+            path: /dev/fuse
