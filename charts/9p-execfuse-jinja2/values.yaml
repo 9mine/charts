@@ -54,5 +54,3 @@ fs: |
           name: element_property
           read_file: curl https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/periodic-table-lookup.json | jq -r '.[] | select(.symbol? and .symbol == "'${element_name}'").'${element_property}
           getattr: *file
-
-profile: |
