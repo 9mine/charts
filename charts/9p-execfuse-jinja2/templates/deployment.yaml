@@ -67,7 +67,7 @@ spec:
       volumes:
         - name: config-volume
           configMap: 
-            name: {{ .Chart.Name }}-execfuse-j2-definition
+            name: {{ .Release.Name }}-execfuse-j2-definition
         - name: shared-data
           emptyDir: {}
         - name: devfuse

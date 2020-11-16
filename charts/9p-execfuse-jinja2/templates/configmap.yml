@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Chart.Name }}-execfuse-j2-definition
+  name: {{ .Release.Name }}-execfuse-j2-definition
 data:
   fs.yml: |
     {{ .Values.fs | nindent 4 }}
