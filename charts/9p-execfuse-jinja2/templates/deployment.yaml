@@ -35,6 +35,15 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          env:          
+            {{- range .Values.env }}
+            - name: "{{ .name }}"
+              value: "{{ .value }}"
+            {{- end }}
+            - name: NINEP_PUBLIC_HOST
+              value: "{{ .Release.Name }}"
+            - name: NINEP_PUBLIC_PORT
+              value: {{ .Values.service.port }}
           ports:
             - name: 9p
               containerPort: 1917
