@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "9p-execfuse-jinja2.fullname" . }}
+  labels:
+    {{- include "9p-execfuse-jinja2.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "9p-execfuse-jinja2.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "9p-execfuse-jinja2.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "9p-execfuse-jinja2.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          ports:
+            - name: 9p
+              containerPort: 1917
+              protocol: TCP
+      initContainers:
+        - name: {{ .Chart.Name }}-execfuse-jinja2
+          image: dievri/execfuse-jinja2:master
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: shared-data
+              mountPath: /execfuse-fs
+            - name: config-volume
+              mountPath: /execfuse-jinja2/examples/fs.yml
+              subPath: fs.yml
+          command: ["/bin/sh"]
+          args: ["-c", "cd /execfuse-jinja2 && jinja2 examples/fs.yml | ./wrapper.sh fs | tar xvf - -C /execfuse-fs --strip 1"]
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+
+      volumes:
+        - name: config-volume
+          configMap: 
+            name: {{ .Chart.Name }}-execfuse-j2-definition
+        - name: shared-data
+          emptyDir: {}
+        - name: devfuse
+          hostPath:
+            path: /dev/fuse

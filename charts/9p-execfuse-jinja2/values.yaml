@@ -1,0 +1,57 @@
+# Default values for 9p-execfuse-jinja2.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: dievri/9p-execfuse-jinja2
+  pullPolicy: Always
+  tag: "master"
+
+serviceAccount:
+  create: false
+
+securityContext: 
+  privileged: true
+  capabilities:
+    add:
+      - SYS_ADMIN
+
+service:
+  type: ClusterIP
+  port: 1917
+
+autoscaling:
+  enabled: false
+
+ingress:
+  enabled: false
+
+fs: |
+  {% include './common.j2' %}
+  wrapper_name: periodic_table
+  
+  fs:
+    "/":                                                    
+      cache: 3600 #in second
+      readdir: lynx -nonumbers -dump -width 256 https://en.wikipedia.org/wiki/List_of_chemical_elements | grep -E '^   [0-9]+ [A-Z]' | awk '{print $2}'
+      getattr: *dir
+      "/[^/]+": #                                           # /<element_name>
+        cache: 3600000 #in second
+        name: element_name
+        getattr: *dir
+        readdir: 
+          - name
+          - density
+          - melt
+          - number
+          - period
+          - phase
+          - image
+        "/[a-z]+$":
+          cache: 9600 # in seconds
+          name: element_property
+          #read_file: curl https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/periodic-table-lookup.json | jq '.[] | select(.symbol == "'${element_name}'").'"${element_property}"
+          read_file: curl https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/periodic-table-lookup.json | jq -r '.[] | select(.symbol? and .symbol == "'${element_name}'").'${element_property}
+          getattr: *file
