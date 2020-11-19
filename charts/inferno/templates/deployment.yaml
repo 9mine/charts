@@ -34,10 +34,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.command }}
-          command: .Values.command
+          command: {{ .Values.command }}
           {{- end }}
           {{- if .Values.args }}
-          command: .Values.args
+          command: {{ .Values.args }}
           {{- end }}
           env:          
             {{- range .Values.env }}
