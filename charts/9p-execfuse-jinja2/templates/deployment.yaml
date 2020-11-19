@@ -66,10 +66,10 @@ spec:
             - name: shared-data
               mountPath: /execfuse-fs
             - name: config-volume
-              mountPath: /execfuse-jinja2/examples/fs.yml
+              mountPath: /execfuse-jinja2/fs.yml
               subPath: fs.yml
           command: ["/bin/sh"]
-          args: ["-c", "cd /execfuse-jinja2 && find . -type f && jinja2 examples/fs.yml | ./wrapper.sh fs | tar xvf - -C /execfuse-fs --strip 1"]
+          args: ["-c", "cd /execfuse-jinja2 && jinja2 fs.yml | ./wrapper.sh fs | tar xvf - -C /execfuse-fs --strip 1"]
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
