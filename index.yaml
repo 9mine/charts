@@ -3,6 +3,16 @@ entries:
   9p-execfuse-jinja2:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2020-11-19T00:44:03.687684273Z"
+    description: A Helm chart for 9p-execfuse-jinja2
+    digest: e19ed473bb84982e39d4bff05a07f229d94b471b05be4dba0c0fe10c75aac53a
+    name: 9p-execfuse-jinja2
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/9p-execfuse-jinja2-0.1.9/9p-execfuse-jinja2-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2020-11-16T23:39:59.52600668Z"
     description: A Helm chart for 9p-execfuse-jinja2
     digest: 58ef43fc2495fe4710a8f71a4ed076d6d95d8b777823364e67429b203c66708f
