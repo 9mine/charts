@@ -26,4 +26,7 @@ data:
     mount -A tcp!registry!registry /mnt/registry
     
     echo $NINEP_PUBLIC_HOST > /dev/sysname 
-    grid/reglisten -A -r svc rstyx 'tcp!*!'^$port { export $dir &} || exit 1
+    grid/reglisten -A -r description $NINEP_DESCRIPTION 'tcp!*!'^$port { export $dir &} || exit 1
+
+#    grid/reglisten  -A -r description 'test description' tcp!*!1222 { export / & }
+    

@@ -28,6 +28,8 @@ autoscaling:
 ingress:
   enabled: false
 
+description: "9mine periodic table module" 
+
 fs: |
   {% include './common.j2' %}
   wrapper_name: periodic_table

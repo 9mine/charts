@@ -46,6 +46,8 @@ spec:
               value: "{{ .Values.service.port }}"
             - name: EXPORT_PATH
               value: /host/execfuse-fs
+            - name: NINEP_DESCRIPTION
+              value: {{ .Values.description | default "9mine module" | quote }}
           volumeMounts:
             - name: devfuse
               mountPath: /dev/fuse
