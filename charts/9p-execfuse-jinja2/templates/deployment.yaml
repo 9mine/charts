@@ -62,8 +62,8 @@ spec:
               protocol: TCP
       initContainers:
         - name: {{ .Chart.Name }}-execfuse-jinja2
-          image: dievri/execfuse-jinja2:master
-          imagePullPolicy: Always
+          image: {{ .Values.image.repo }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPlicy | default("Always") }}
           volumeMounts:
             - name: shared-data
               mountPath: /execfuse-fs
