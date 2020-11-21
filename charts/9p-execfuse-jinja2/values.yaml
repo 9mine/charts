@@ -1,13 +1,14 @@
-# Default values for 9p-execfuse-jinja2.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
 replicaCount: 1
 
-image:
-  repository: dievri/9p-execfuse-jinja2
+image: 
+  repository: dievri/9mine-periodic-table
+  tag: "master"
   pullPolicy: Always
-  tag: "feature_lua_handlers"
+
+initContainerImage:
+  repository: dievri/execfuse-jinja2
+  tag: "master"
+  pullPolicy: Always
 
 serviceAccount:
   create: false
