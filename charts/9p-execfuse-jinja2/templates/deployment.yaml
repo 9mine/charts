@@ -63,7 +63,7 @@ spec:
       initContainers:
         - name: {{ .Chart.Name }}-execfuse-jinja2
           image: {{ .Values.image.repo }}:{{ .Values.image.tag }}
-          imagePullPolicy: {{ .Values.image.pullPlicy | default("Always") }}
+          imagePullPolicy: {{ .Values.image.pullPlicy | default "Always" }}
           volumeMounts:
             - name: shared-data
               mountPath: /execfuse-fs
