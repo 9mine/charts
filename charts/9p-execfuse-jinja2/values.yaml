@@ -66,20 +66,20 @@ fs: |
           cache: 9600 # in seconds
           read_file: 
             sh: |
-              URL=`curl https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/periodic-table-lookup.json | jq -r '.[] | select(.symbol? and .symbol == "'${element_name}'").image'`
-              curl -o ${URL}
+              curl https://www.inorganicventures.com/pub/media/inorganicperiodictable/elements/${element_name}.gif | convert gif:- png:-
             lua: print(".read_file.lua /<element_name>/<property>")
           getattr: 
             sh: *file
             lua: print(".getattr.lua /<element_name>/<property>") 
               
   
-        "/[a-z]+":
-          cache: 9600 # in seconds
-          name: element_property
-          read_file: 
-            sh: curl https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/periodic-table-lookup.json | jq -r '.[] | select(.symbol? and .symbol == "'${element_name}'").'${element_property}
-            lua: print(".read_file.lua")
-          getattr: 
-            sh: *file
-            lua: print(".getattr.lua")
+#        "/[a-z]+":
+#          cache: 9600 # in seconds
+#          name: element_property
+#          read_file: 
+#            sh: |
+#              curl https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/periodic-table-lookup.json | jq -r '.[] | select(.symbol? and .symbol == "'${element_name}'").'${element_property}
+#            lua: print(".read_file.lua")
+#          getattr: 
+#            sh: *file
+#            lua: print(".getattr.lua")
