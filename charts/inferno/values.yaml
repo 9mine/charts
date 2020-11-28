@@ -11,8 +11,9 @@ serviceAccount:
 securityContext: {}
 
 service:
-  type: ClusterIP
-  port: 1918
+  - type: ClusterIP
+    port: 1918
+
 
 ingress:
   enabled: false

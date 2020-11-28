@@ -5,11 +5,13 @@ metadata:
   labels:
     {{- include "inferno.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  {{- range $svc := .Values.service }}
+  type: {{ $svc.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 1918
-      protocol: TCP
-      name: 9p
+    - port: {{ $svc.port }}
+      targetPort: {{ $svc.port }}  # always the same
+      protocol: TCP                           # always tcp
+      name: 9p-{{ $svc.port }} 
+  {{- end }}    
   selector:
     {{- include "inferno.selectorLabels" . | nindent 4 }}
