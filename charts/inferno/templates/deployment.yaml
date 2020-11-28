@@ -55,9 +55,11 @@ spec:
           volumeMounts:
             - name: devfuse
               mountPath: /dev/fuse
-            - name: profile-volume
-              mountPath: /usr/inferno-os/lib/sh/profile
-              subPath: profile
+            {{- range $k, $v := .Values.files }} 
+            - name: configmap-volume
+              mountPath: {{ $v.path }}
+              subPath: {{ $k }}
+            {{- end }}
           
       {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -72,9 +74,9 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       volumes:
-        - name: profile-volume
+        - name: configmap-volume
           configMap: 
-            name: {{ .Release.Name }}-profile
+            name: {{ .Release.Name }}-configmap
         - name: devfuse
           hostPath:
             path: /dev/fuse
