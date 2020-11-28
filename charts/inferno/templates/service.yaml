@@ -16,6 +16,7 @@ spec:
   {{- end }}    
   selector:
     {{- include "inferno.selectorLabels" . | nindent 4 }}
+{{- if .Values.nodePortRange }}
 ---
 apiVersion: v1
 kind: Service
@@ -30,7 +31,8 @@ spec:
     - port: {{ $nPort }}
       targetPort: {{ $nPort }}
       nodePort: {{ $nPort }}
-      name: node-port-test-{{ $nPort }}
+      name: "{{ $.Release.Name }}-nodeport-{{ $nPort }}"
     {{- end }}
   selector:
     {{- include "inferno.selectorLabels" . | nindent 4 }}
+{{- end }}
