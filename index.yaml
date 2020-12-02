@@ -367,6 +367,16 @@ entries:
   minetest-master:
   - apiVersion: v2
     appVersion: 1.1.1
+    created: "2020-12-02T21:42:13.685013555Z"
+    description: Minetest server for 9mine
+    digest: f77b092627178a8790e24c360402546ead40d77137efca20fa00bd461411d356
+    name: minetest-master
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/minetest-master-0.1.13/minetest-master-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
+    appVersion: 1.1.1
     created: "2020-12-02T21:26:39.240304766Z"
     description: Minetest server for 9mine
     digest: 0a2b47ee156a196078884463665411ae3207d5585f72025002383151803939be
