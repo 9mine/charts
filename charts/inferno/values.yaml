@@ -14,10 +14,10 @@ service:
   - type: ClusterIP
     port: 1918
 
-nodePortRange:
-  from: 30100
-  to: 30200
-  proto: tcp
+#nodePortRange:
+#  from: 30100
+#  to: 30200
+#  proto: tcp
 
 
 ingress:
