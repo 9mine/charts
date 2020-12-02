@@ -38,6 +38,8 @@ spec:
               value: {{ .Values.INFERNO_ADDR }}
             - name: REFRESH_TIME
               value: "{{ .Values.REFRESH_TIME }}"
+            - name: REGISTRY_ADDR
+              value: {{ .Values.REGISTRY_ADDR }}
           ports:
             - name: http
               containerPort: 30000
