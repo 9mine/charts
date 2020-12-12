@@ -60,6 +60,10 @@ spec:
               mountPath: {{ $v.path }}
               subPath: {{ $k }}
             {{- end }}
+            {{- if .Values.storage }}
+            - name: storage
+              mountPath: {{ .Values.storage.mountPath }}
+            {{- end }}
           
       {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -80,3 +84,10 @@ spec:
         - name: devfuse
           hostPath:
             path: /dev/fuse
+      {{- if .Values.storage }}
+        - name: storage
+          persistentVolumeClaim:
+            claimName: pvc-{{ include "inferno.fullname" . }} 
+      {{- end }}
+      
+      

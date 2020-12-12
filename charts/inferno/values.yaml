@@ -27,6 +27,12 @@ resources: {}
 autoscaling:
   enabled: false
 
+
+storage:
+  size: 4Gi
+  class: yc-network-ssd
+  mountPath: /usr/inferno-os/host/storage
+
 files:
   profile:
     path: /usr/inferno-os/lib/sh/profile

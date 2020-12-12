@@ -1,0 +1,15 @@
+{{- if .Values.storage }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-{{ include "inferno.fullname" . }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  {{- if .Values.storage.class }}
+  storageClassName: {{ .Values.storage.class }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.storage.size }}
+{{- end }}

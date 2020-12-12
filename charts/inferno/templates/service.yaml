@@ -35,4 +35,5 @@ spec:
     {{- end }}
   selector:
     {{- include "inferno.selectorLabels" . | nindent 4 }}
+---
 {{- end }}
