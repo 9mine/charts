@@ -64,7 +64,21 @@ spec:
             - name: storage
               mountPath: {{ .Values.storage.mountPath }}
             {{- end }}
-          
+            {{- if .Values.initWithGit }}
+            - name: export
+              mountPath: {{ .Values.initWithGit.mountPath }}
+            {{- end }}
+      {{- if .Values.initWithGit }}
+      initContainers:
+        - name: init-git-clone
+          image: alpine/git
+          command: ['sh', '-c', 'git clone --depth=1 {{ .Values.initWithGit.URL }} /init-fs && rm -rf /init-fs/.git']
+          volumeMounts: 
+          - mountPath: /init-fs
+            name: export    
+      {{- end }}
+
+      
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -88,6 +102,10 @@ spec:
         - name: storage
           persistentVolumeClaim:
             claimName: pvc-{{ include "inferno.fullname" . }} 
+      {{- end }}
+      {{- if .Values.initWithGit }}
+        - name: export
+          emptyDir: {}
       {{- end }}
       
       
