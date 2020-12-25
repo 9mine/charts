@@ -1,5 +1,6 @@
 replicaCount: 1
-
+secrets: 
+  test: secret
 image: 
   repository: dievri/9mine-periodic-table
   tag: "master"

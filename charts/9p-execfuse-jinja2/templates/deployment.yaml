@@ -48,6 +48,11 @@ spec:
               value: /host/execfuse-fs
             - name: NINEP_DESCRIPTION
               value: {{ .Values.description | default "9mine module" | quote }}
+          envFrom: 
+              {{- if .Values.secrets }}
+              - secretRef:
+                  name: {{ .Release.Name }}-secrets
+              {{- end }}
           volumeMounts:
             - name: devfuse
               mountPath: /dev/fuse
