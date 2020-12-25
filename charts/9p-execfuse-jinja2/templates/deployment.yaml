@@ -65,6 +65,16 @@ spec:
             - name: 9p
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          {{- if .Values.command }}
+          command: {{- range .Values.command }}
+                  - {{ . }}
+                  {{- end }}
+          {{- end }}
+          {{- if .Values.args }}
+          args: {{- range .Values.args }}
+                  - {{ . }}
+                  {{- end }}
+          {{- end }}
       initContainers:
         - name: {{ .Chart.Name }}-execfuse-jinja2
           image: {{ .Values.initContainerImage.repository }}:{{ .Values.initContainerImage.tag }}
