@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "minetest-master.name" -}}
+{{- define "minetest.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "minetest-master.fullname" -}}
+{{- define "minetest.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "minetest-master.chart" -}}
+{{- define "minetest.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "minetest-master.labels" -}}
-helm.sh/chart: {{ include "minetest-master.chart" . }}
-{{ include "minetest-master.selectorLabels" . }}
+{{- define "minetest.labels" -}}
+helm.sh/chart: {{ include "minetest.chart" . }}
+{{ include "minetest.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "minetest-master.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "minetest-master.name" . }}
+{{- define "minetest.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "minetest.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "minetest-master.serviceAccountName" -}}
+{{- define "minetest.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "minetest-master.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "minetest.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
