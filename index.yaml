@@ -424,6 +424,17 @@ entries:
     urls:
     - https://github.com/9mine/charts/releases/download/inferno-0.1.2/inferno-0.1.2.tgz
     version: 0.1.2
+  minetest:
+  - apiVersion: v2
+    appVersion: 1.1.1
+    created: "2020-12-25T14:14:53.863867989Z"
+    description: Minetest server for 9mine
+    digest: aacc6bc35ae9b36af2bead8de1e1499b3a00d2a88d5788c2c2df61adc193d889
+    name: minetest
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/minetest-0.1.12/minetest-0.1.12.tgz
+    version: 0.1.12
   minetest-master:
   - apiVersion: v2
     appVersion: 1.1.1
