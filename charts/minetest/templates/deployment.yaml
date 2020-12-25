@@ -34,10 +34,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: INFERNO_ADDRESS
-              value: {{ .Values.INFERNO_ADDRESS }}
-            - name: REFRESH_TIME
-              value: "{{ .Values.REFRESH_TIME }}"
+            {{- range .Values.env }}
+            - name: "{{ .name }}"
+              value: "{{ .value }}"
+            {{- end }}
           ports:
             - name: http
               containerPort: 30000
