@@ -3,6 +3,16 @@ entries:
   9p-execfuse-jinja2:
   - apiVersion: v2
     appVersion: 1.17.0
+    created: "2020-12-25T14:58:31.223280965Z"
+    description: A Helm chart for 9p-execfuse-jinja2
+    digest: 5b8608979c1661159943d926deeed50159496cf3f503feabbdaec7bff2b18da9
+    name: 9p-execfuse-jinja2
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/9p-execfuse-jinja2-0.3.5/9p-execfuse-jinja2-0.3.5.tgz
+    version: 0.3.5
+  - apiVersion: v2
+    appVersion: 1.17.0
     created: "2020-12-25T11:05:27.784034916Z"
     description: A Helm chart for 9p-execfuse-jinja2
     digest: ba2d67f406f0e71a0f51ecff552df99d929de5567ff997de81931cf6bd959649
@@ -236,6 +246,16 @@ entries:
   inferno:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2020-12-25T14:58:31.324090529Z"
+    description: InfernoOS instance for k8s-9mine
+    digest: cdce5300f22cf13d6eabd238d6614c7b0eba179d11603d7e0c3926a73b49963f
+    name: inferno
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/inferno-0.4.4/inferno-0.4.4.tgz
+    version: 0.4.4
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2020-12-18T12:02:28.495200679Z"
     description: InfernoOS instance for k8s-9mine
     digest: 290f71620f9e303e27c48483a2d843b3781e4c96ac6ae57655864bed2cb48363
@@ -425,6 +445,16 @@ entries:
     - https://github.com/9mine/charts/releases/download/inferno-0.1.2/inferno-0.1.2.tgz
     version: 0.1.2
   minetest:
+  - apiVersion: v2
+    appVersion: 1.1.1
+    created: "2020-12-25T14:58:31.433813116Z"
+    description: Minetest server for 9mine
+    digest: c67743ce4648f89993da2a5cd212b4349c7aaed7ea20f94ab421e01fe0beb6d1
+    name: minetest
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/minetest-0.1.13/minetest-0.1.13.tgz
+    version: 0.1.13
   - apiVersion: v2
     appVersion: 1.1.1
     created: "2020-12-25T14:14:53.863867989Z"
