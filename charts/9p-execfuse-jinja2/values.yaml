@@ -7,7 +7,7 @@ image:
   pullPolicy: Always
 
 initContainerImage:
-  repository: dievri/execfuse-jinja2
+  repository: 9mine/execfuse-jinja2
   tag: "master"
   pullPolicy: Always
 

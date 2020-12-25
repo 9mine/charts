@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: dievri/inferno-os
+  repository: 9mine/inferno-os
   pullPolicy: Always
   tag: "focal"
 

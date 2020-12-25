@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: dievri/minetest
+  repository: 9mine/minetest
   pullPolicy: Always
   tag: "master"
 
