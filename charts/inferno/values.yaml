@@ -5,9 +5,6 @@ image:
   pullPolicy: Always
   tag: "focal"
 
-serviceAccount:
-  create: false
-
 securityContext: {}
 
 service:
@@ -19,14 +16,7 @@ service:
 #  to: 30200
 #  proto: tcp
 
-
-ingress:
-  enabled: false
-
 resources: {}
-autoscaling:
-  enabled: false
-
 
 storage:
   size: 4Gi
