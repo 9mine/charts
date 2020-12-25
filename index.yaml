@@ -447,6 +447,16 @@ entries:
   minetest:
   - apiVersion: v2
     appVersion: 1.1.1
+    created: "2020-12-25T16:54:13.180786677Z"
+    description: Minetest server for 9mine
+    digest: c9684d9d236fa571b458fe4354408013a0f4900316ac9a905e3c118fddca087e
+    name: minetest
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/minetest-0.1.14/minetest-0.1.14.tgz
+    version: 0.1.14
+  - apiVersion: v2
+    appVersion: 1.1.1
     created: "2020-12-25T14:58:31.433813116Z"
     description: Minetest server for 9mine
     digest: c67743ce4648f89993da2a5cd212b4349c7aaed7ea20f94ab421e01fe0beb6d1
