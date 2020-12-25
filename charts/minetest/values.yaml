@@ -9,11 +9,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-serviceAccount:
-  create: true
-  annotations: {}
-  name: ""
-
 podAnnotations: {}
 
 podSecurityContext: {}
@@ -24,14 +19,6 @@ service:
   type: NodePort
   port: 30000
   nodePort: 30000
-
-ingress:
-  enabled: false
-  annotations: {}
-  hosts:
-    - host: ""
-      paths: []
-  tls: []
  
 resources: {}
 
