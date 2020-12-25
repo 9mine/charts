@@ -27,7 +27,7 @@ data:
     
     echo $NINEP_PUBLIC_HOST > /dev/sysname 
     grid/reglisten -A -r description ${quote $NINEP_DESCRIPTION} 'tcp!*!'^$port { export $dir &} 
-    test -n $status && exit 1
+    test -n $status && os pkill -9 emu-g
 
 #    grid/reglisten  -A -r description 'test description' tcp!*!1222 { export / & }
     
