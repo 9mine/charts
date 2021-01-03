@@ -256,6 +256,16 @@ entries:
   inferno:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2021-01-03T09:35:44.131499318Z"
+    description: InfernoOS instance for k8s-9mine
+    digest: 4ecb0a8b1c86b6f5eafb7f2fcf43e31bd56648dddd4da7bd3568767ca5d9b4a4
+    name: inferno
+    type: application
+    urls:
+    - https://github.com/9mine/charts/releases/download/inferno-0.5.1/inferno-0.5.1.tgz
+    version: 0.5.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2020-12-25T21:47:44.007411034Z"
     description: InfernoOS instance for k8s-9mine
     digest: 3ad2b2ee5a366822b29b359959d9e893296a9566ebab67dddce9f088f86749c3
