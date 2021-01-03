@@ -46,7 +46,7 @@ files:
               rread ''
             }
           } {
-            sh -c ${rget data} >$output_file >>[2]$output_file
+            sh -n -c ${rget data} >$output_file >>[2]$output_file
         	}
     
       listen -A 'tcp!*!'$port { export $dir & } &
