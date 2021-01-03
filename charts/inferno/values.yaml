@@ -31,14 +31,14 @@ files:
       load std
       ndb/cs
       for host_var in `{ os env } { '{'$host_var'}' }
-      CMD_CHAN_DIR = /tmp/cmdchan
+      CMD_CHAN_DIR = /n/cmdchan/chan
     
       test -d $CMD_CHAN_DIR || mkdir -p $CMD_CHAN_DIR
     
       dir = /
       port = 1918
       
-      output_file := /tmp/output_file
+      output_file := /n/cmdchan/tmp_output_file
       file2chan $CMD_CHAN_DIR^/cmd {
             if {~ ${rget offset} 0} {
               cat $output_file | putrdata
