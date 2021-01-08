@@ -5,14 +5,11 @@ image:
   pullPolicy: Always
   tag: "master"
 
-imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
 podAnnotations: {}
-
 podSecurityContext: {}
-
 securityContext: {}
 
 service:
@@ -22,13 +19,27 @@ service:
  
 resources: {}
 
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 10
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
+configuration: 
+      server_name: 9mine
+      server_description: 9mine Prof of Concept
+      server_address: node1.dev.metacoma.io
+      server_url: https://github.com/9mine/9mine
+      server_announce: true
+      serverlist_url: servers.minetest.net
+      port: 30000
+      max_packets_per_iteration: 4096
+      default_game: devtest
+      motd: Welcome to 9mine. Enjoy your stay!
+      max_users: 15
+      enable_damage: false
+      creative_mode: false
+      default_privs: interact, shout, give, teleport, bring, fast, fly, noclip, settime, privs, basic_privs, ban, rollback, server
+      enable_pvp: false
+      active_object_send_range_blocks: 5
+      active_block_range: 4
+      max_block_send_distance: 20
+      max_forceloaded_blocks: 10
+      time_speed: 0
+      max_objects_per_block: 512
+      mg_name: singlenode
+      secure.enable_security: false

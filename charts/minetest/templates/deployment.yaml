@@ -18,10 +18,6 @@ spec:
       labels:
         {{- include "minetest.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -39,27 +35,14 @@ spec:
             - name: http
               containerPort: 30000
               protocol: UDP
-          livenessProbe:
-            exec:
-              command:
-                - touch
-                - /tmp/liveness
-          readinessProbe:
-            exec:
-              command:
-                - touch
-                - /tmp/readiness
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+          volumeMounts:
+             - name: conf
+               mountPath: /root/.minetest/minetest.conf
+               subPath: minetest.conf
+                            
+      volumes:
+      - name: conf 
+        configMap:
+          name: {{ .Release.Name }}-configmap
