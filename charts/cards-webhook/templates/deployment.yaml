@@ -5,9 +5,7 @@ metadata:
   labels:
     {{- include "project-webhook.labels" . | nindent 4 }}
 spec:
-{{- if not .Values.autoscaling.enabled }}
   replicas: 1
-{{- end }}
   selector:
     matchLabels:
       {{- include "project-webhook.selectorLabels" . | nindent 6 }}
@@ -24,7 +22,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "project-webhook.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -33,33 +30,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-          env:          
-          - name: GITHUB_USER
-            valueFrom:
-              secretKeyRef:
-                key:  GITHUB_USER
-                name: {{ .Release.Name }}-auth
-          - name: GITHUB_TOKEN
-            valueFrom:
-              secretKeyRef:
-                key:  GITHUB_TOKEN
-                name: {{ .Release.Name }}-auth
-          - name: GITHUB_WEBHOOK_SECRET
-            valueFrom:
-              secretKeyRef:
-                key:  GITHUB_WEBHOOK_SECRET
-                name: {{ .Release.Name }}-auth
-          - name: GITHUB_TG_CHAT_ID
-            valueFrom:
-              secretKeyRef:
-                key:  GITHUB_TG_CHAT_ID
-                name: {{ .Release.Name }}-auth
-          - name: GITHUB_TG_BOT_TOKEN
-            valueFrom:
-              secretKeyRef:
-                key:  GITHUB_TG_BOT_TOKEN
-                name: {{ .Release.Name }}-auth  
+          envFrom:
+          - secretRef:
+              name: {{ .Release.Name }}-secrets
           ports:
             - name: http
               containerPort: 3000
@@ -72,17 +45,3 @@ spec:
             httpGet:
               path: /
               port: http
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}

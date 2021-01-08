@@ -5,11 +5,6 @@ image:
   pullPolicy: Always
   tag: cards
 
-serviceAccount:
-  create: true
-  annotations: {}
-  name: ""
-
 podAnnotations: {}
 podSecurityContext: {}
 securityContext: {}
@@ -27,15 +22,3 @@ ingress:
       paths:
         - /
   tls: []
-
-resources: {}
-
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 1
-  targetCPUUtilizationPercentage: 80
-
-nodeSelector: {}
-tolerations: []
-affinity: {}
