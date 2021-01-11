@@ -12,5 +12,12 @@ spec:
       targetPort: {{ .Values.service.port }}
       protocol: TCP
       name: 9p
+    {{- if .Values.ClusterIPRange }}
+      {{- range $nPort := untilStep (int .Values.ClusterIPRange.from)  (int .Values.ClusterIPRange.to) 1 }}
+    - port: {{ $nPort }}
+      targetPort: {{ $nPort }}
+      name: "{{ $.Release.Name }}-port-{{ $nPort }}"
+    {{- end }}
+    {{- end }}
   selector:
     {{- include "9p-execfuse-jinja2.selectorLabels" . | nindent 4 }}
