@@ -12,6 +12,5 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-profile
 data:
-  profile: |
-     {{ .Values.profile | nindent 4 }}
+  profile: | {{ .Values.profile | nindent 8 }}
     
